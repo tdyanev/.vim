@@ -27,6 +27,7 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>x :x!<cr>
+nmap <leader>wa :wall!<cr>
 
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -99,8 +100,13 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
-set background=dark
+set t_Co=256
+set background=light
+colorscheme summerfruit256
+set cursorline
+hi CursorLine cterm=NONE ctermbg=235 ctermfg=white
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -108,6 +114,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+set modifiable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -165,8 +172,18 @@ map <right> <nop>
 map <space> :%s/
 
 " duplicate a line
-
 nmap <leader>d yyp
+
+" swap this and bottom line
+nmap <leader>sw Vdp
+
+" mark all content
+nmap <leader>a ggVG
+
+" mark block of code
+nmap <leader>{ /}<cr>v%0
+nmap <leader>( /)<cr>v%0
+nmap <leader>[ /]<cr>v%0
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -367,7 +384,11 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 
-autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype json setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 "Autoupdate file changes
 "
