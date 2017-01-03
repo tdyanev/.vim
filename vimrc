@@ -105,7 +105,7 @@ set background=light
 colorscheme summerfruit256
 set cursorline
 hi CursorLine cterm=NONE ctermbg=235 ctermfg=white
-highlight Normal ctermbg=NONE
+highlight Normal ctermbg=white
 highlight nonText ctermbg=NONE
 
 " Set utf8 as standard encoding and en_US as the standard language
